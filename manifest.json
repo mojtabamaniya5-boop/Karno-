@@ -1,0 +1,14 @@
+{
+  "name": "کارنو — مدیریت کارها",
+  "short_name": "کارنو",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07071a",
+  "theme_color": "#07071a",
+  "orientation": "portrait",
+  "lang": "fa",
+  "dir": "rtl",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
