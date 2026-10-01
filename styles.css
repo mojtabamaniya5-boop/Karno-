@@ -1,0 +1,205 @@
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
+:root{
+  --bg:#07071a;
+  --text:#f2f2ff;
+  --muted:#8b8bb0;
+  --primary:#8b5cf6;
+  --primary2:#06b6d4;
+  --success:#10b981;
+  --danger:#f43f5e;
+  --glass:rgba(255,255,255,.06);
+  --glass-brd:rgba(255,255,255,.12);
+}
+
+html,body{height:100%}
+body{
+  font-family:'Vazirmatn',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100dvh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* ===== پس‌زمینه متحرک ===== */
+.bg-orbs{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;animation:float 22s ease-in-out infinite}
+.orb-1{width:420px;height:420px;background:radial-gradient(circle,#8b5cf6,transparent 70%);top:-140px;right:-120px}
+.orb-2{width:380px;height:380px;background:radial-gradient(circle,#06b6d4,transparent 70%);bottom:-140px;left:-120px;animation-delay:-7s}
+.orb-3{width:320px;height:320px;background:radial-gradient(circle,#ec4899,transparent 70%);top:38%;left:20%;animation-delay:-14s}
+@keyframes float{
+  0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(40px,-30px) scale(1.12)}
+  66%{transform:translate(-30px,30px) scale(.94)}
+}
+.grid-overlay{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(circle at 50% 30%,#000,transparent 80%);
+  -webkit-mask-image:radial-gradient(circle at 50% 30%,#000,transparent 80%);
+}
+
+/* ===== بدنه اپ ===== */
+.app{
+  position:relative;z-index:1;
+  max-width:520px;margin:0 auto;
+  padding:22px 18px 40px;
+  min-height:100dvh;
+  display:flex;flex-direction:column;gap:18px;
+}
+
+/* ===== هدر ===== */
+.header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{
+  width:46px;height:46px;border-radius:14px;
+  display:grid;place-items:center;
+  font-weight:800;font-size:22px;color:#fff;
+  background:linear-gradient(135deg,#8b5cf6,#06b6d4);
+  box-shadow:0 8px 24px -6px rgba(139,92,246,.6);
+}
+.header h1{font-size:20px;font-weight:800;letter-spacing:-.4px}
+.subtitle{font-size:12px;color:var(--muted);margin-top:2px}
+.date{
+  font-size:11px;color:var(--muted);
+  background:var(--glass);border:1px solid var(--glass-brd);
+  padding:6px 10px;border-radius:99px;white-space:nowrap;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+
+/* ===== گلس پایه ===== */
+.glass{
+  background:var(--glass);
+  border:1px solid var(--glass-brd);
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+}
+
+/* ===== آمار ===== */
+.stats{
+  display:flex;align-items:center;justify-content:space-around;
+  padding:16px 8px;border-radius:20px;
+}
+.stat{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1}
+.stat-num{font-size:22px;font-weight:800;background:linear-gradient(135deg,#a78bfa,#22d3ee);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:11px;color:var(--muted)}
+.divider{width:1px;height:26px;background:var(--glass-brd)}
+
+/* ===== نوار پیشرفت ===== */
+.progress-bar{height:6px;border-radius:99px;background:rgba(255,255,255,.06);overflow:hidden;margin-top:-6px}
+.progress-fill{
+  height:100%;width:0%;border-radius:99px;
+  background:linear-gradient(90deg,#8b5cf6,#06b6d4,#22d3ee);
+  transition:width .5s cubic-bezier(.22,1,.36,1);
+  box-shadow:0 0 14px rgba(139,92,246,.6);
+}
+
+/* ===== فرم افزودن ===== */
+.add-form{
+  display:flex;gap:10px;align-items:center;
+  background:var(--glass);border:1px solid var(--glass-brd);
+  padding:8px 8px 8px 16px;border-radius:18px;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  transition:border-color .25s,box-shadow .25s;
+}
+.add-form:focus-within{
+  border-color:rgba(139,92,246,.55);
+  box-shadow:0 0 0 4px rgba(139,92,246,.12);
+}
+.add-form input{
+  flex:1;background:none;border:none;outline:none;
+  color:var(--text);font-family:inherit;font-size:15px;padding:10px 0;
+}
+.add-form input::placeholder{color:var(--muted)}
+.add-form button{
+  width:46px;height:46px;flex-shrink:0;
+  border:none;border-radius:14px;cursor:pointer;
+  display:grid;place-items:center;color:#fff;
+  background:linear-gradient(135deg,#8b5cf6,#06b6d4);
+  box-shadow:0 8px 20px -6px rgba(139,92,246,.7);
+  transition:transform .18s,box-shadow .18s;
+}
+.add-form button svg{width:20px;height:20px}
+.add-form button:active{transform:scale(.92)}
+.add-form button:hover{box-shadow:0 12px 26px -6px rgba(139,92,246,.9)}
+
+/* ===== لیست کارها ===== */
+.task-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+
+.task{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 14px;
+  background:var(--glass);border:1px solid var(--glass-brd);
+  border-radius:16px;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  animation:slideIn .35s cubic-bezier(.22,1,.36,1) both;
+  transition:transform .2s,border-color .25s,opacity .3s;
+}
+@keyframes slideIn{
+  from{opacity:0;transform:translateY(-10px) scale(.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.task.removing{animation:slideOut .3s forwards}
+@keyframes slideOut{
+  to{opacity:0;transform:translateX(40px) scale(.9);margin-bottom:-54px}
+}
+
+.check{
+  width:26px;height:26px;flex-shrink:0;
+  border-radius:50%;cursor:pointer;
+  border:2px solid rgba(255,255,255,.28);
+  background:transparent;
+  display:grid;place-items:center;
+  transition:all .25s cubic-bezier(.22,1,.36,1);
+}
+.check svg{width:14px;height:14px;opacity:0;transform:scale(.4);transition:all .25s}
+.check:hover{border-color:var(--primary)}
+.task.done .check{
+  background:linear-gradient(135deg,#10b981,#06b6d4);
+  border-color:transparent;
+  box-shadow:0 0 14px rgba(16,185,129,.5);
+}
+.task.done .check svg{opacity:1;transform:scale(1);color:#fff}
+.task.done .task-text{text-decoration:line-through;color:var(--muted);opacity:.7}
+
+.task-text{
+  flex:1;font-size:15px;line-height:1.5;word-break:break-word;
+  transition:color .25s,opacity .25s;
+}
+
+.delete{
+  width:34px;height:34px;flex-shrink:0;
+  border:none;border-radius:10px;cursor:pointer;
+  background:transparent;color:var(--muted);
+  display:grid;place-items:center;
+  transition:all .2s;
+}
+.delete svg{width:16px;height:16px}
+.delete:hover{background:rgba(244,63,94,.15);color:var(--danger)}
+
+/* ===== حالت خالی ===== */
+.empty{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;text-align:center;padding:40px 0;opacity:0;pointer-events:none;
+  transition:opacity .3s;
+}
+.empty.show{opacity:1}
+.empty-icon{font-size:44px;filter:drop-shadow(0 0 20px rgba(139,92,246,.6));animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.empty p{font-size:15px;font-weight:600}
+.empty small{color:var(--muted);font-size:12px}
+
+/* ===== فوتر ===== */
+.footer{display:flex;justify-content:center;margin-top:auto;padding-top:8px}
+.clear-btn{
+  background:transparent;border:1px solid var(--glass-brd);
+  color:var(--muted);font-family:inherit;font-size:12px;
+  padding:8px 16px;border-radius:99px;cursor:pointer;
+  transition:all .2s;opacity:0;pointer-events:none;
+}
+.clear-btn.show{opacity:1;pointer-events:auto}
+.clear-btn:hover{color:var(--danger);border-color:rgba(244,63,94,.4)}
