@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0a1a">
+<title>کارنو — مدیریت کارها</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="grid-overlay"></div>
+</div>
+
+<main class="app">
+
+  <header class="header">
+    <div class="logo">
+      <div class="logo-mark">ک</div>
+      <div>
+        <h1>کارنو</h1>
+        <p class="subtitle">مدیریت هوشمند کارها</p>
+      </div>
+    </div>
+    <div class="date" id="date"></div>
+  </header>
+
+  <section class="stats glass">
+    <div class="stat">
+      <span class="stat-num" id="totalCount">0</span>
+      <span class="stat-label">کل</span>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <span class="stat-num" id="doneCount">0</span>
+      <span class="stat-label">انجام شده</span>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <span class="stat-num" id="progressPercent">0%</span>
+      <span class="stat-label">پیشرفت</span>
+    </div>
+  </section>
+
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <form class="add-form" id="addForm" autocomplete="off">
+    <input
+      type="text"
+      id="taskInput"
+      placeholder="کار جدیدت رو بنویس..."
+      maxlength="120"
+      required
+    >
+    <button type="submit" aria-label="افزودن">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round">
+        <path d="M12 5v14M5 12h14"/>
+      </svg>
+    </button>
+  </form>
+
+  <ul class="task-list" id="taskList"></ul>
+
+  <div class="empty" id="empty">
+    <div class="empty-icon">✨</div>
+    <p>هنوز کاری ثبت نکردی</p>
+    <small>اولین کارت رو اضافه کن</small>
+  </div>
+
+  <footer class="footer" id="footer">
+    <button class="clear-btn" id="clearDone">پاک کردن انجام‌شده‌ها</button>
+  </footer>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
